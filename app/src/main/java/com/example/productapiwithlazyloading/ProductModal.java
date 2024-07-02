@@ -9,10 +9,7 @@ public class ProductModal {
     private String description;
     private List<String> images;
     private String creationAt;
-    private String updatedAt;
     private Category category;
-
-    // Getters and Setters
 
     public int getId() {
         return id;
@@ -62,14 +59,6 @@ public class ProductModal {
         this.creationAt = creationAt;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -78,15 +67,12 @@ public class ProductModal {
         this.category = category;
     }
 
-    // Inner Category class
     public static class Category {
         private int id;
         private String name;
         private String image;
         private String creationAt;
         private String updatedAt;
-
-        // Getters and Setters
 
         public int getId() {
             return id;
@@ -127,5 +113,7 @@ public class ProductModal {
         public void setUpdatedAt(String updatedAt) {
             this.updatedAt = updatedAt;
         }
+
     }
+
 }
