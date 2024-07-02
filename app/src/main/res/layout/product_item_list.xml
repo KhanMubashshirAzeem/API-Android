@@ -1,68 +1,91 @@
 <!-- product_item_list.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="20sp"
     android:orientation="vertical"
-    android:padding="16dp">
+    app:cardCornerRadius="20sp">
 
-    <!-- Title -->
-    <TextView
-        android:id="@+id/product_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="Product Title" />
+        android:orientation="vertical"
+        android:padding="12dp">
 
-    <!-- Price -->
-    <TextView
-        android:id="@+id/product_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:text="Price: $0.00" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <!-- Description -->
-    <TextView
-        android:id="@+id/product_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:maxLines="2"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:text="Product description goes here. This is a placeholder text for description." />
+            <!-- Title -->
+            <TextView
+                android:id="@+id/product_title"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:paddingStart="4dp"
+                android:gravity="center_vertical"
+                android:text="Product Title"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <!-- Image (assuming one image, adjust as needed for multiple images) -->
-    <ImageView
-        android:id="@+id/product_image"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
-        android:src="@color/black" /> <!-- Placeholder image if no image is loaded -->
+            <!-- Price -->
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="Price: $0.00"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    <!-- Creation Date -->
-    <TextView
-        android:id="@+id/product_creation_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:text="Created on: Jan 1, 2023" />
+        </LinearLayout>
 
-    <!-- Category Name -->
-    <TextView
-        android:id="@+id/product_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:text="Category: Electronics" />
 
-</LinearLayout>
+        <!-- Description -->
+        <TextView
+            android:id="@+id/product_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxLines="2"
+            android:text="Product description goes here. This is a placeholder text for description."
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <!-- Image (assuming one image, adjust as needed for multiple images) -->
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@color/black" /> <!-- Placeholder image if no image is loaded -->
+
+        <!-- Creation Date -->
+        <TextView
+            android:id="@+id/product_creation_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Created on: Jan 1, 2023"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <!-- Category Name -->
+        <TextView
+            android:id="@+id/product_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Category: Electronics"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
