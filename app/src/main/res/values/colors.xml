@@ -4,4 +4,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="light_gray">#e6e6e6</color>
+
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+    <color name="priceColor">#ff4c4f</color>
+    <color name="placeholderImage">#E0E0E0</color>
+
 </resources>

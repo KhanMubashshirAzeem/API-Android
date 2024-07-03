@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ProductAPIWithLazyLoading</string>
+    <string name="app_name">Product_API_Android</string>
+    <string name="product_image_desc">Product Image</string>
 </resources>

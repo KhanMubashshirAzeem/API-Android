@@ -2,6 +2,9 @@ package com.example.productapiwithlazyloading;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<ProductModal> productList;
     private RecyclerView recyclerView;
+    ProgressBar progressBar;
+    private long pressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +41,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recycler_view);
+        progressBar = findViewById(R.id.progress_bar);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         fetchProducts();
+
+
     }
 
     private void fetchProducts() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://api.escuelajs.co/api/v1/") // Replace with your API base URL
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("https://api.escuelajs.co/api/v1/") // Replace with your API base URL
+                .addConverterFactory(GsonConverterFactory.create()).build();
+
+        progressBar.setVisibility(View.VISIBLE);
 
         ProductAPI productAPI = retrofit.create(ProductAPI.class);
         productAPI.getProduct().enqueue(new Callback<List<ProductModal>>() {
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     productList = response.body();
                     recyclerView.setAdapter(new ProductAdapter(MainActivity.this, productList));
+                    progressBar.setVisibility(View.GONE);
                 } else {
                     Log.e("API", "Response not successful or body is null");
                 }
@@ -65,4 +74,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+
+        if (pressedTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+            finish();
+        } else {
+            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+        pressedTime = System.currentTimeMillis();
+    }
+
 }

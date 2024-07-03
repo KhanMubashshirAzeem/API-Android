@@ -5,27 +5,44 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
 
-    String api = "https://api.escuelajs.co/api/v1/products/";
+    static String api = "https://api.escuelajs.co/api/v1/products/";
 
-    public static RetrofitInstance instance;
-    ProductAPI productAPI;
+    // Lazy loading for Retrofit object
+    private static Retrofit retrofit = null;
 
-    RetrofitInstance() {
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(api)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        productAPI = retrofit.create(ProductAPI.class);
-
-    }
-
-    public static RetrofitInstance getInstance() {
-        if (instance == null) {
-            instance = new RetrofitInstance();
+    private static Retrofit getRetrofitInstance() {
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(api)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
         }
-        return instance;
+        return retrofit;
     }
+
+    public static ProductAPI getApiService() {
+        return getRetrofitInstance().create(ProductAPI.class);
+    }
+
+//    public static RetrofitInstance instance;
+//    ProductAPI productAPI;
+//
+//    RetrofitInstance() {
+//
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(api)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .build();
+//
+//        productAPI = retrofit.create(ProductAPI.class);
+//
+//    }
+//
+//    public static RetrofitInstance getInstance() {
+//        if (instance == null) {
+//            instance = new RetrofitInstance();
+//        }
+//        return instance;
+//    }
 
 }
