@@ -8,6 +8,9 @@ This Android application fetches a list of products from a RESTful API and displ
 - Show a progress bar while loading data.
 - Handle back button press with a confirmation toast.
 
+## Connect with me.
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/khanmubashshir/)
+
 ## Dependencies
 
 Add the following dependencies to your `build.gradle` file:
