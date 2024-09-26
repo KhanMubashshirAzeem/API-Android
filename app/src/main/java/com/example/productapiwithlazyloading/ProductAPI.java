@@ -11,4 +11,7 @@ public interface ProductAPI {
     @GET("products")
     Call<List<ProductModal>> getProduct();
 
+    @GET("categories")
+    Call<List<CategoryModel>> getCategory();
+
 }

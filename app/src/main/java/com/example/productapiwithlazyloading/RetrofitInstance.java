@@ -7,15 +7,13 @@ public class RetrofitInstance {
 
     static String api = "https://api.escuelajs.co/api/v1/products/";
 
+
     // Lazy loading for Retrofit object
     private static Retrofit retrofit = null;
 
     private static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(api)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+            retrofit = new Retrofit.Builder().baseUrl(api).addConverterFactory(GsonConverterFactory.create()).build();
         }
         return retrofit;
     }
@@ -23,26 +21,5 @@ public class RetrofitInstance {
     public static ProductAPI getApiService() {
         return getRetrofitInstance().create(ProductAPI.class);
     }
-
-//    public static RetrofitInstance instance;
-//    ProductAPI productAPI;
-//
-//    RetrofitInstance() {
-//
-//        Retrofit retrofit = new Retrofit.Builder()
-//                .baseUrl(api)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build();
-//
-//        productAPI = retrofit.create(ProductAPI.class);
-//
-//    }
-//
-//    public static RetrofitInstance getInstance() {
-//        if (instance == null) {
-//            instance = new RetrofitInstance();
-//        }
-//        return instance;
-//    }
 
 }
